@@ -1,0 +1,65 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.paginate-bar {
+    width: 100%;
+    height: 70px;
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    background-color: $black;
+    color: $white;
+    list-style-type: none;
+    gap: 20px;
+    @include mixins.flex(row, center, center);
+    @include mixins.font(PT Sans, 20px, normal, 700, 100%);
+
+    @media (max-width: 768px) {
+        height: 50px;
+        gap: 10px;
+        @include mixins.font(PT Sans, 12px, normal, 700, 100%);
+    }
+
+    li {
+        padding: 5px 10px;
+        border-radius: 20px;
+        cursor: pointer;
+        @include mixins.flex(row, center, center);
+
+        @media (max-width: 768px) {
+            padding: 5px 10px;
+        }
+
+        &:hover {
+            background-color: $grey;
+        }
+
+        &.selected {
+            border: 2px solid $white;
+        }
+
+        &.previous,
+        &.next {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            background-color: $white;
+            color: $black;
+            transition: all 0.3s ease-in-out;
+
+            @media (max-width: 768px) {
+                width: 20px;
+                height: 20px;
+            }
+
+            &.disabled {
+                visibility: hidden;
+            }
+
+            &:hover {
+                background-color: $grey;
+                color: $white;
+            }
+        }
+    }
+}

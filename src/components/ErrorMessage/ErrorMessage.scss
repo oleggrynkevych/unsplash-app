@@ -1,0 +1,8 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.error-message {
+    color: $red;
+    margin-top: 10vh;
+    @include mixins.font(PT Sans, 25px, normal, 700, 100%);
+}

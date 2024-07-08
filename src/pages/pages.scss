@@ -1,0 +1,244 @@
+@use '../styles/mixins.scss';
+@import '../styles/variables.scss';
+
+.main-page {
+    width: 100%;
+    margin-top: 65px;
+    position: relative;
+    @include mixins.flex(column, flex-start, center);
+
+    @media (max-width: 768px) {
+        margin-top: 45px;
+    }
+
+    .main-page-container {
+        width: calc(100% - 200px);
+        min-height: 70vh;
+        gap: 20px;
+        @include mixins.flex(column, flex-start, center);
+
+        @media (max-width: 1024px) {
+            width: calc(100% - 100px);
+        }
+
+        @media (max-width: 768px) {
+            width: calc(100% - 50px);
+            gap: 10px;
+        }
+
+        @media (max-width: 375px) {
+            width: calc(100% - 20px);
+        }
+
+        .main-page-controls {
+            width: 100%;
+            padding-top: 20px;
+            position: relative;
+            gap: 20px;
+            @include mixins.flex(row, flex-start, center);
+
+            @media (max-width: 1024px) {
+                gap: 10px;
+            }
+
+            @media (max-width: 768px) {
+                padding-top: 10px;
+                @include mixins.flex(column, flex-start, flex-start);     
+            }
+
+            .main-page-clear-button-container {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease-in-out;
+
+                @media (max-width: 768px) {
+                    width: calc(50% - 5px);
+                    position: absolute;
+                    right: 0;
+                    top: 52px;
+                }
+
+                &.visible {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+            }
+
+            .main-page-switch-button-container {
+                position: absolute;
+                right: 0px;
+                top: 20px;
+
+                @media (max-width: 768px) {
+                    position: static;
+                    width: 100%;
+                }
+            }
+        }
+
+        .main-page-title {
+            width: 100%;
+            text-align: start;
+            @include mixins.font(PT Sans, 40px, normal, 700, 100%);
+
+            @media (max-width: 768px) {
+                @include mixins.font(PT Sans, 30px, normal, 700, 100%);
+            }
+        }
+    }
+}
+
+.image-page {
+    width: 100%;
+    margin-top: 65px;
+    padding-top: 80px;
+    position: relative;
+    @include mixins.flex(row, center, center);
+
+    @media (max-width: 768px) {
+        margin-top: 45px;
+        padding-top: 49px;
+    }
+
+    .image-page-button-container {
+        position: absolute;
+        top: 0;
+        left: 100px;
+        padding: 20px 0;
+        @include mixins.flex(row, flex-start, center);
+
+        @media (max-width: 1024px) {
+            left: 50px;
+        }
+
+        @media (max-width: 768px) {
+            width: calc(100% - 50px);
+            left: 25px;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 375px) {
+            width: calc(100% - 20px);
+            left: 10px;
+        }
+    }
+
+    .image-page-container {
+        width: calc(100% - 200px);
+        min-height: 70vh;
+        @include mixins.flex(row, space-between, flex-start);
+
+        @media (max-width: 1024px) {
+            width: calc(100% - 100px);
+        }
+
+        @media (max-width: 768px) {
+            width: calc(100% - 50px);
+            gap: 10px;
+            @include mixins.flex(column, flex-start, center);
+        }
+
+        @media (max-width: 375px) {
+            width: calc(100% - 20px);
+        }
+
+        .image-page-img-box {
+            width: 40%;
+            position: relative;
+            cursor: pointer;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+
+            &:hover .image-page-img-box-icon {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 1;
+            }
+
+            &:hover .image-page-img-box-main {
+                transform: scale(0.9);
+            }
+
+            .image-page-img-box-main {
+                width: 100%;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .image-page-img-box-icon {
+                width: 10%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transform-origin: center;
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        .image-page-info-box {
+            width: 50%;
+            gap: 20px;
+            color: $black;
+            @include mixins.flex(column, flex-start, flex-start);
+
+            @media (max-width: 768px) {
+                width: 100%;
+                gap: 10px;
+                @include mixins.flex(column, flex-start, flex-start);
+            }
+
+            .image-page-info-item {
+                width: 100%;
+                @include mixins.flex(column, flex-start, flex-end);
+
+                @media (max-width: 768px) {
+                    @include mixins.flex(column, flex-start, flex-start);
+                }
+
+                .image-page-info-item-label {
+                    opacity: 0.5;
+                    text-transform: lowercase;
+                    @include mixins.font(PT Sans, 15px, normal, 700, 100%);
+
+                    @media (max-width: 768px) {
+                        margin-bottom: 5px;
+                    }
+                }
+
+                .image-page-info-item-text {
+                    text-align: end;
+                    @include mixins.font(PT Sans, 25px, normal, 700, 100%);
+
+                    @media (max-width: 768px) {
+                        text-align: start;
+                    }
+
+                    @media (max-width: 375px) {
+                        @include mixins.font(PT Sans, 22px, normal, 700, 100%);
+                    }
+                }
+
+                .image-page-info-item-tags {
+                    width: 100%;
+                    padding-top: 5px;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    @include mixins.flex(row, flex-end, flex-end);
+
+                    @media (max-width: 768px) {
+                        @include mixins.flex(row, flex-start, flex-start);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.initial-container {
+    width: 100%;
+    min-height: 70vh;
+    @include mixins.flex(row, center, flex-start);
+}

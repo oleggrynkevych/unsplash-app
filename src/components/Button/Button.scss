@@ -1,0 +1,24 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.common-button {
+    cursor: pointer;
+    background-color: $black;
+    color: $white;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    text-transform: lowercase;
+    @include mixins.font(PT Sans, 20px, normal, 700, 100%);
+
+    @media (max-width: 768px) {
+        padding: 7px 10px;
+        @include mixins.font(PT Sans, 15px, normal, 700, 100%);
+    }
+
+    &:hover {
+        background-color: $grey;
+        color: $black;
+    }
+}

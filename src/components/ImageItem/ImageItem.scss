@@ -1,0 +1,39 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.image-item {
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+        margin-bottom: 10px;
+    }
+
+    &:hover .image-item-coverer {
+        opacity: 0.7;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .image-item-coverer {
+        width: 100%;
+        height: 100%;
+        background-color: $black;
+        color: $white;
+        position: absolute;
+        top: 0;
+        z-index: 3;
+        opacity: 0;
+        text-transform: lowercase;
+        transition: opacity 0.3s ease-in-out;
+        @include mixins.flex(row, center, center);
+        @include mixins.font(PT Sans, 20px, normal, 700, 100%);
+
+        @media (max-width: 768px) {
+            @include mixins.font(PT Sans, 15px, normal, 700, 100%);
+        }
+    }
+}

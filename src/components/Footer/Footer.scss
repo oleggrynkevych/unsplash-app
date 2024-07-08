@@ -1,0 +1,14 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.footer {
+    width: 100%;
+    height: 200px;
+    @include mixins.flex(row, center, center);
+
+    .footer-container {
+        width: 100%;
+        gap: 30px;
+        @include mixins.flex(row, center, center);
+    }
+}

@@ -1,0 +1,30 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: $black;
+    @include mixins.flex(row, center, center);
+
+    img {
+        max-width: 85%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .modal-button-container {
+        position: absolute;
+        top: 5vh;
+        right: 5vh;
+
+        @media (max-width: 1024px) {
+            top: 5vh;
+            right: 1vh;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@use '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.search-bar {
+    gap: 10px;
+    @include mixins.flex(row, center, center);
+
+    @media (max-width: 768px) {
+        width: 100%;
+        @include mixins.flex(column, flex-start, flex-start);
+    }
+
+    input {
+        width: 250px;
+        background-color: $grey;
+        color: $black;
+        border-radius: 30px;
+        border: none;
+        padding: 10px 15px;
+        text-transform: lowercase;
+        @include mixins.font(PT Sans, 15px, normal, 700, 100%);
+
+        @media (max-width: 1024px) {
+            width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            width: calc(100% - 20px);
+            padding: 7px 10px;
+        }
+
+
+        &::placeholder {
+            color: $black;
+            opacity: 0.3;
+        }
+
+        &:active,
+        &:focus {
+            outline: none;
+        }
+    }
+}
